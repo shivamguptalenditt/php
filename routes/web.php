@@ -21,8 +21,15 @@ Route::get('/', function () {
     return $note;
 });
 
-Route::get('/user',[UserController::class,"show"]);
+Route::get('/user', [UserController::class, "show"]);
 
-Route::post('/registerUser',[UserController::class,"create"]);
+Route::post('/registerUser', [UserController::class, "create"]);
+Route::delete('/registerUser/{id}}', [UserController::class, "destroy"]);
 
+
+
+
+// Route::delete('users/{id}', function ($id) {
+    
+// });
 // Route::resource('user', [UserController::class,"show"]);

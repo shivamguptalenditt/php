@@ -26,8 +26,14 @@ class UserController extends Controller
             "password"=>"required",
             "email"=>"required|email"
         ]);
-        
-        print_r( $request->all());
+        $user = new User();
+        $user->name=$request->name;
+        $user->password = $request->password;
+        $user->email = $request->email;
+        $user->save();
+
+
+        print_r( $user->body->all());
     }
 
     /**
@@ -44,8 +50,8 @@ class UserController extends Controller
     public function show(User $user)
     {
         //
-
-        return view("User");
+        $data = User::all();
+        return view("user",['user'=>$data]);
     }
 
     /**
@@ -67,8 +73,10 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
         //
+        $data = User::find($id);
+        $data->delete();
     }
 }
