@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FormController;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 
@@ -21,14 +22,16 @@ Route::get('/', function () {
     return $note;
 });
 
-Route::get('/user', [UserController::class, "show"]);
+Route::view('/', 'form');
 
 Route::post('/registerUser', [UserController::class, "create"]);
-Route::delete('/registerUser/{id}}', [UserController::class, "destroy"]);
+Route::delete('/registerUser/{{id}}', [UserController::class, "destroy"]);
 
-
-
-
+Route::get('/showUser',[FormController::class,"showUser"]);
+Route::post('/addUser',[FormController::class,"addUser"]);
+Route::get("/deleteUser/{id}",[FormController::class,"deleteUser"]);
+Route::get("/editUser/{id}",[FormController::class,"editUser"]);
+Route::post("/updateUser/{id}",[FormController::class,"updateUser"]);
 // Route::delete('users/{id}', function ($id) {
     
 // });

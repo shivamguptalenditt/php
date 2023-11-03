@@ -51,7 +51,7 @@ class UserController extends Controller
     {
         //
         $data = User::all();
-        return view("user",['user'=>$data]);
+        return view('formData',compact($data));
     }
 
     /**
